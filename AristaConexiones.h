@@ -11,7 +11,7 @@ private:
     int distancia;
 
 public:
-    AristaConexiones();
+    AristaConexiones(int idCliente, int idServidor, int velocidad, int distancia);
 
     int getIdCliente() const;
 

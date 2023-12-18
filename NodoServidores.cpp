@@ -1,7 +1,11 @@
 #include "NodoServidores.h"
 
-NodoServidores::NodoServidores() {
+#include <utility>
 
+NodoServidores::NodoServidores(int id, string nombre, string tipo) {
+    NodoServidores::id = id;
+    NodoServidores::nombre = std::move(nombre);
+    NodoServidores::tipo = std::move(tipo);
 }
 
 int NodoServidores::getId() const {

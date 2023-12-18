@@ -13,7 +13,7 @@ private:
     string tipo;
 
 public:
-    NodoServidores();
+    NodoServidores(int id, string nombre, string tipo);
 
     int getId() const;
 
