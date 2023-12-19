@@ -95,6 +95,7 @@ vector<NodoServidores*> lecturaServidores() {
 
         vector<NodoServidores *> datos;
         string linea;
+        getline(archivo, linea);
 
         while (getline(archivo, linea)) {
             istringstream ss(linea);
@@ -128,6 +129,7 @@ vector<AristaConexiones*> lecturaConexiones() {
     if (archivo.is_open()) {
         vector<AristaConexiones*> datos;
         string linea;
+        getline(archivo, linea);
 
         while (getline(archivo, linea)) {
             istringstream ss(linea);
