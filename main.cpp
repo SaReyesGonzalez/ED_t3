@@ -4,6 +4,7 @@
 #include <sstream>
 #include "NodoServidores.h"
 #include "AristaConexiones.h"
+#include "Grafo.h"
 
 using namespace std;
 
@@ -14,6 +15,11 @@ int main() {
 
     vector<NodoServidores*> vServidores = lecturaServidores();
     vector<AristaConexiones*> vConexiones = lecturaConexiones();
+
+    auto* grafo = new Grafo(vServidores, vConexiones);
+
+
+
 
     return 0;
 }
