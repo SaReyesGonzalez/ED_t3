@@ -15,15 +15,20 @@ class Grafo {
 private:
     vector<NodoServidores*> nodos;
     vector<AristaConexiones*> aristas;
+    NodoServidores* nodoReferencia;
 
 public:
-    Grafo(vector<NodoServidores*> nodos, vector<AristaConexiones*> aristas);
+    Grafo(vector<NodoServidores*> nodos, vector<AristaConexiones*> aristas, NodoServidores* nodoReferencia);
 
     const vector<NodoServidores*> &getNodos() const;
 
     const vector<AristaConexiones*> &getAristas() const;
 
     void calcularTiempoDemoraADestino(int idOrigen, int idDestino);
+
+    void bellmanFord(int idOrigen, int idDestino);
+
+    NodoServidores* encontrarNodoPorId(int idNodo);
 };
 
 

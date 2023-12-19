@@ -12,13 +12,17 @@ using namespace std;
 vector<NodoServidores*> lecturaServidores();
 vector<AristaConexiones*> lecturaConexiones();
 bool existeUsuarioId(int user, vector<NodoServidores*> vServidores);
-int registro(bool flag, int userId, const vector<NodoServidores*>& vServidores);
+int registro(bool flag, int userId, const vector<NodoServidores*> &vServidores);
+NodoServidores* crearGrafo(vector<NodoServidores*>& nodos, vector<AristaConexiones*> aristas);
+NodoServidores* encontrarNodoPorId(vector<NodoServidores*> nodos, int idNodo);
 
 int main() {
 
     vector<NodoServidores*> vServidores = lecturaServidores();
     vector<AristaConexiones*> vConexiones = lecturaConexiones();
-    auto* grafo = new Grafo(vServidores, vConexiones);
+    NodoServidores* nodoReferencia = crearGrafo(vServidores, vConexiones);
+
+    auto* grafo = new Grafo(vServidores, vConexiones,nodoReferencia);
 
     char funcion;
     bool flag = true;
@@ -184,4 +188,33 @@ int registro(bool flag, int userId, const vector<NodoServidores*>& vServidores) 
     } while (!flag);
 
     return userId;
+}
+
+NodoServidores* crearGrafo(vector<NodoServidores*>& nodos, vector<AristaConexiones*> aristas) {
+
+    for (int i = 0 ; i < aristas.size() ; i++) {
+
+        int auxIdOrigen = aristas.at(i)->getIdCliente();
+        int auxIdDestino = aristas.at(i)->getIdServidor();
+
+        NodoServidores* auxNodoOrigen = encontrarNodoPorId(nodos, auxIdOrigen);
+        NodoServidores* auxNodoDestino = encontrarNodoPorId(nodos,auxIdDestino);
+
+        auxNodoOrigen->getVNodosEnviados().push_back(auxNodoDestino);
+        auxNodoDestino->getVNodosEnviados().push_back(auxNodoOrigen);
+    }
+
+    NodoServidores* nodoReferencia = nodos.front();
+
+    return nodoReferencia;
+}
+
+NodoServidores* encontrarNodoPorId(vector<NodoServidores*> nodos, int idNodo) {
+
+    for (int i = 0; i < nodos.size() ; i++) {
+        if (nodos.at(i)->getId() == idNodo) {
+            return nodos.at(i);
+        }
+    }
+    return nullptr;
 }

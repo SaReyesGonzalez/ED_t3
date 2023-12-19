@@ -122,5 +122,9 @@ CMakeFiles/ED_t3.dir/NodoServidores.cpp.o: \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/9/bits/functional_hash.h \
- /usr/include/c++/9/bits/basic_string.tcc /usr/include/c++/9/utility \
- /usr/include/c++/9/bits/stl_relops.h
+ /usr/include/c++/9/bits/basic_string.tcc /usr/include/c++/9/vector \
+ /usr/include/c++/9/bits/stl_construct.h \
+ /usr/include/c++/9/bits/stl_uninitialized.h \
+ /usr/include/c++/9/bits/stl_vector.h \
+ /usr/include/c++/9/bits/stl_bvector.h /usr/include/c++/9/bits/vector.tcc \
+ /usr/include/c++/9/utility /usr/include/c++/9/bits/stl_relops.h
