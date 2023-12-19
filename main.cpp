@@ -21,8 +21,10 @@ int main() {
     auto* grafo = new Grafo(vServidores, vConexiones);
 
     char funcion;
-    int userId = 0;
     bool flag = true;
+    int userId = 0;
+    int idOrigen = 0;
+    int idDestino = 0;
 
     cout << "Bienvenido a: Simulador - aplicacion de mensajeria !" << endl;
 
@@ -32,10 +34,10 @@ int main() {
     // opciones menu
     do {
         cout << "\n----- PANEL DE OPCIONES -----" << endl;
-        cout << "A) Calcular tiempo de demora entre usted y un destino." << endl; //Funcion basica
-        cout << "B) Calcular tiempo de demora entre un origen y destino." << endl; //Funcion extra 1
-        cout << "C) Funcion extra 2" << endl;
-        cout << "D) Funcion extra 3" << endl;
+        cout << "A) Calcular tiempo de demora entre usted y un dispositivo destino." << endl; //Funcion basica
+        cout << "B) Calcular tiempo de demora entre un dispositivo de origen y destino." << endl; //Funcion extra 1
+        cout << "C) Agregar vector." << endl; //Funcion extra 2
+        cout << "D) Lista de Vectores y aristas." << endl; //Funcion extra 3
         cout << "E) Salir" << endl;
 
         flag = true;
@@ -47,22 +49,27 @@ int main() {
 
             case 'a':
             case 'A':
-                cout << "a" << endl;
+                idDestino = registro(flag,idDestino,vServidores);
+                grafo->calcularTiempoDemoraADestino(userId,idDestino);
+
                 break;
 
             case 'b':
             case 'B':
-                cout << "b" << endl;
+                idOrigen = registro(flag,idOrigen,vServidores);
+                idDestino = registro(flag,idDestino,vServidores);
+                grafo->calcularTiempoDemoraADestino(idOrigen,idDestino);
+
                 break;
 
             case 'c':
             case 'C':
-                cout << "c" << endl;
+                cout << "FUNCION EXTRA 2" << endl;
                 break;
 
             case 'd':
             case 'D':
-                cout << "d" << endl;
+                cout << "FUNCION EXTRA 3" << endl;
                 break;
 
             case 'e':
@@ -162,16 +169,14 @@ bool existeUsuarioId(int userId, vector<NodoServidores*> vServidores) {
 
 int registro(bool flag, int userId, const vector<NodoServidores*>& vServidores) {
     do {
-        flag = true;
-
-        cout << "Ingrese su id de usuario: ";
+        cout << "Ingrese su id dispositivo: ";
         cin >> userId;
 
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         flag = existeUsuarioId(userId,vServidores);
 
         if (!flag) {
-            cout << "Id usuario no existe, ingrese un id nuevamente." << endl;
+            cout << "Id dispositivo no existe, ingrese un id nuevamente." << endl;
         }
 
     } while (!flag);

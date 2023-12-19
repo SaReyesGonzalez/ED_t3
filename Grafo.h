@@ -3,7 +3,12 @@
 
 #include "AristaConexiones.h"
 #include "NodoServidores.h"
+#include <iostream>
 #include <vector>
+
+using namespace std;
+
+const int MB_MAXIMOS = 300;
 
 class Grafo {
 
@@ -14,11 +19,11 @@ private:
 public:
     Grafo(vector<NodoServidores*> nodos, vector<AristaConexiones*> aristas);
 
-    const vector<NodoServidores *> &getNodos() const;
+    const vector<NodoServidores*> &getNodos() const;
 
-    const vector<AristaConexiones *> &getAristas() const;
+    const vector<AristaConexiones*> &getAristas() const;
 
-
+    void calcularTiempoDemoraADestino(int idOrigen, int idDestino);
 };
 
 
