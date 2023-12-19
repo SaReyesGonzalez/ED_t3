@@ -15,10 +15,9 @@ class Grafo {
 private:
     vector<NodoServidores*> nodos;
     vector<AristaConexiones*> aristas;
-    NodoServidores* nodoReferencia;
 
 public:
-    Grafo(vector<NodoServidores*> nodos, vector<AristaConexiones*> aristas, NodoServidores* nodoReferencia);
+    Grafo(vector<NodoServidores*> nodos, vector<AristaConexiones*> aristas);
 
     const vector<NodoServidores*> &getNodos() const;
 

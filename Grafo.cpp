@@ -1,11 +1,8 @@
 #include "Grafo.h"
 
-#include <utility>
-
-Grafo::Grafo(vector<NodoServidores*> nodos, vector<AristaConexiones*> aristas, NodoServidores* nodoReferencia) {
+Grafo::Grafo(vector<NodoServidores*> nodos, vector<AristaConexiones*> aristas) {
     Grafo::nodos = nodos;
     Grafo::aristas = aristas;
-    Grafo::nodoReferencia = nodoReferencia;
 }
 
 const vector<NodoServidores*> &Grafo::getNodos() const {
