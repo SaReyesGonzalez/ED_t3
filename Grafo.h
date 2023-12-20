@@ -9,8 +9,6 @@
 
 using namespace std;
 
-const int MB_MAXIMOS = 300;
-
 class Grafo {
 
 private:
@@ -26,7 +24,7 @@ public:
 
     void calcularTiempoDemoraADestino(int idOrigen, int idDestino);
 
-    void bellmanFord(int idOrigen);
+    void bellmanFord(NodoServidores* nodoOrigen);
 
     NodoServidores* encontrarNodoPorId(int idNodo);
 

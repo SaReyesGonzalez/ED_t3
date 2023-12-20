@@ -15,32 +15,46 @@ const vector<AristaConexiones*> &Grafo::getAristas() const {
 
 void Grafo::calcularTiempoDemoraADestino(int idOrigen, int idDestino) {
 
+    NodoServidores* nodoOrigen = encontrarNodoPorId(idOrigen);
     NodoServidores* nodoDestino = encontrarNodoPorId(idDestino);
+    NodoServidores* nodoAux = nullptr;
+
+    bellmanFord(nodoOrigen);
 
     int peso;
+    int partes;
+    int tiempoTotal = 0;
+    vector<NodoServidores*> ruta;
+
+    ruta.push_back(nodoDestino);
+
     cout << "Ingrese el peso del archivo que desea enviar: ";
     cin >> peso;
 
-    int partes;
-    partes = peso / MB_MAXIMOS;
+    do {
+        nodoAux = nodoDestino->getNodoCaminoMasCorto();
 
-    int distanciaTotal;
+        AristaConexiones* auxArista = encontrarAristaPorIds(nodoDestino->getId(), nodoAux->getId());
 
-    bellmanFord(idOrigen);
+        int mbMaximos = auxArista->getVelocidad();
+        int distancia = auxArista->getDistancia();
+        partes = peso / mbMaximos;
 
+        tiempoTotal = tiempoTotal + (partes * distancia);
 
+        ruta.push_back(nodoAux);
 
+        nodoDestino = nodoAux;
+        nodoAux = nodoAux->getNodoCaminoMasCorto();
 
+    } while (nodoDestino != nodoOrigen);
 
-
-
-
+    cout << "El tiempo de entrega entre el nodo " << idOrigen <<
+    " y el nodo " << idDestino << " es de " << tiempoTotal << " segundos." << endl;
 
 }
 
-void Grafo::bellmanFord(int idOrigen) {
-
-    NodoServidores* nodoOrigen = encontrarNodoPorId(idOrigen);
+void Grafo::bellmanFord(NodoServidores* nodoOrigen) {
 
     //Inicializacion
     for (auto &nodo : nodos) {
