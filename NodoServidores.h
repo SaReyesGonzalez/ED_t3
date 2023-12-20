@@ -12,6 +12,8 @@ private:
     int id;
     string nombre;
     string tipo;
+    int distanciaMasCorta;
+    NodoServidores* nodoCaminoMasCorto;
     vector<NodoServidores*> vNodosEnviados;
 
 public:
@@ -23,9 +25,15 @@ public:
 
     const string &getTipo() const;
 
+    int getDistanciaMasCorta() const;
+
+    NodoServidores *getNodoCaminoMasCorto() const;
+
     vector<NodoServidores*> &getVNodosEnviados();
 
+    void setNodoCaminoMasCorto(NodoServidores *nodoCaminoMasCorto);
 
+    void setDistanciaMasCorta(int distanciaMasCorta);
 };
 
 

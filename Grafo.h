@@ -5,6 +5,7 @@
 #include "NodoServidores.h"
 #include <iostream>
 #include <vector>
+#include <limits>
 
 using namespace std;
 
@@ -25,9 +26,11 @@ public:
 
     void calcularTiempoDemoraADestino(int idOrigen, int idDestino);
 
-    void bellmanFord(int idOrigen, int idDestino);
+    void bellmanFord(int idOrigen);
 
     NodoServidores* encontrarNodoPorId(int idNodo);
+
+    AristaConexiones* encontrarAristaPorIds(int idNodoOrigen, int idNodoDestino);
 };
 
 

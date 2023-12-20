@@ -187,8 +187,7 @@ CMakeFiles/ED_t3.dir/Grafo.cpp.o
  /usr/include/c++/9/bits/ostream.tcc
  /usr/include/c++/9/istream
  /usr/include/c++/9/bits/istream.tcc
- /usr/include/c++/9/utility
- /usr/include/c++/9/bits/stl_relops.h
+ /usr/include/c++/9/limits
 
 CMakeFiles/ED_t3.dir/NodoServidores.cpp.o
  /home/sebastian/Programacion/C++/ED_t3/NodoServidores.cpp

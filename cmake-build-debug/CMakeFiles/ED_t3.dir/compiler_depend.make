@@ -185,8 +185,7 @@ CMakeFiles/ED_t3.dir/Grafo.cpp.o: ../Grafo.cpp \
   /usr/include/c++/9/bits/ostream.tcc \
   /usr/include/c++/9/istream \
   /usr/include/c++/9/bits/istream.tcc \
-  /usr/include/c++/9/utility \
-  /usr/include/c++/9/bits/stl_relops.h
+  /usr/include/c++/9/limits
 
 CMakeFiles/ED_t3.dir/NodoServidores.cpp.o: ../NodoServidores.cpp \
   /usr/include/stdc-predef.h \
@@ -535,8 +534,6 @@ CMakeFiles/ED_t3.dir/main.cpp.o: ../main.cpp \
   ../Grafo.h
 
 
-/usr/include/c++/9/limits:
-
 /usr/include/c++/9/bits/fstream.tcc:
 
 /usr/include/x86_64-linux-gnu/c++/9/bits/c++io.h:
@@ -548,6 +545,8 @@ CMakeFiles/ED_t3.dir/main.cpp.o: ../main.cpp \
 /usr/include/c++/9/bits/stl_relops.h:
 
 /usr/include/c++/9/utility:
+
+/usr/include/c++/9/limits:
 
 /usr/include/c++/9/bits/istream.tcc:
 

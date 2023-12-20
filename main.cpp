@@ -175,7 +175,7 @@ bool existeUsuarioId(int userId, vector<NodoServidores*> vServidores) {
 
 int registro(bool flag, int userId, const vector<NodoServidores*>& vServidores) {
     do {
-        cout << "Ingrese su id dispositivo: ";
+        cout << "Ingrese id dispositivo: ";
         cin >> userId;
 
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
