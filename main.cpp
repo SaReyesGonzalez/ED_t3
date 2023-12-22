@@ -54,6 +54,7 @@ int main() {
             case 'a':
             case 'A':
                 idDestino = registro(flag,idDestino,vServidores);
+                grafo->bellmanFord(encontrarNodoPorId(vServidores,userId));
                 grafo->calcularTiempoDemoraADestino(userId,idDestino);
 
                 break;

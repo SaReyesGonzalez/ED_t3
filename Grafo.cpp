@@ -19,8 +19,6 @@ void Grafo::calcularTiempoDemoraADestino(int idOrigen, int idDestino) {
     NodoServidores* nodoDestino = encontrarNodoPorId(idDestino);
     NodoServidores* nodoAux = nullptr;
 
-    bellmanFord(nodoOrigen);
-
     int peso;
     int partes;
     int tiempoTotal = 0;
@@ -56,29 +54,14 @@ void Grafo::calcularTiempoDemoraADestino(int idOrigen, int idDestino) {
 
 void Grafo::bellmanFord(NodoServidores* nodoOrigen) {
 
-    //Inicializacion
+    // Inicialización
     for (auto &nodo : nodos) {
         int distancia = (nodo == nodoOrigen) ? 0 : numeric_limits<int>::max();
         nodo->setDistanciaMasCorta(distancia);
         nodo->setNodoCaminoMasCorto(nullptr);
     }
 
-    //Relajacion
-    for (auto &nodo : nodos) {
-
-        if (nodo->getVNodosEnviados().size() == 1 && nodo->getTipo() == "cliente\r") {
-
-            NodoServidores* routerConectado = nodo->getVNodosEnviados().front();
-            AristaConexiones* arista = encontrarAristaPorIds(nodo->getId(), routerConectado->getId());
-
-            if (arista) {  // Asegurémonos de que la arista exista
-                nodo->setNodoCaminoMasCorto(routerConectado);
-                nodo->setDistanciaMasCorta(arista->getDistancia());
-            }
-
-        }
-    }
-
+    // Relajación general
     for (int i = 1; i <= nodos.size() - 1; i++) {
         for (auto &arista : aristas) {
             int idCliente = arista->getIdCliente();
@@ -96,6 +79,38 @@ void Grafo::bellmanFord(NodoServidores* nodoOrigen) {
             }
         }
     }
+
+    for (int i = 1; i <= nodos.size() - 1; i++) {
+        for (auto &arista : aristas) {
+            int idCliente = arista->getIdCliente();
+            int idServidor = arista->getIdServidor();
+            int distancia = arista->getDistancia();
+
+            NodoServidores* u = encontrarNodoPorId(idCliente);
+            NodoServidores* v = encontrarNodoPorId(idServidor);
+
+            if (v->getDistanciaMasCorta() != numeric_limits<int>::max() &&
+                v->getDistanciaMasCorta() + distancia < u->getDistanciaMasCorta()) {
+
+                u->setDistanciaMasCorta(v->getDistanciaMasCorta() + distancia);
+                u->setNodoCaminoMasCorto(v);
+            }
+        }
+    }
+
+    // Relajación especial para clientes
+    /*
+    for (auto &nodo : nodos) {
+        if (nodo->getVNodosEnviados().size() == 1 && nodo->getTipo() == "cliente\r") {
+            NodoServidores* routerConectado = nodo->getVNodosEnviados().front();
+            AristaConexiones* arista = encontrarAristaPorIds(nodo->getId(), routerConectado->getId());
+            if (arista) {
+                nodo->setNodoCaminoMasCorto(routerConectado);
+                nodo->setDistanciaMasCorta(arista->getDistancia());
+            }
+        }
+    }
+     */
 }
 
 NodoServidores* Grafo::encontrarNodoPorId(int idNodo) {
