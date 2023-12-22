@@ -1,7 +1,11 @@
 # Documentación de Proyecto 
 
+## Integrantes: 
+- Sebastian Antonio Reyes Gonzalez / 20.864.017-8
+- Ignacio Rebolledo Orellana / 20.501.872-7
+
 ## Dato importante: 
-En las funciones que leen los archivos .csv nunca pude hacerlos correr de otra forma que no fuera con la direccion de la carpeta en la cual se encontraban. Espero esto no le cause mayores inconvenientes ...
+En las funciones que leen los archivos .csv nunca pude hacerlos correr de otra forma que no fuera con la direccion de la carpeta en la cual se encontraban. Espero esto no le cause mayores inconvenientes ... De todas formas pude compilarlo y ejecutarlo en onlineGBD cambiando los tipos de datos por .txt y modificando el programa de manera acorde. Habiendo mencionado esto, no tengo nada mas que decir, espero que tenga unas felices vacaciones.
 
 ## Comando de compilacion
 - g++ -o main main.cpp NodoServidores.cpp AristaConexiones.cpp Grafo.cpp
