@@ -147,4 +147,9 @@ CMakeFiles/ED_t3.dir/main.cpp.o: \
  /usr/include/c++/9/bits/sstream.tcc /usr/include/c++/9/limits \
  /home/sebastian/Programacion/C++/ED_t3/NodoServidores.h \
  /home/sebastian/Programacion/C++/ED_t3/AristaConexiones.h \
- /home/sebastian/Programacion/C++/ED_t3/Grafo.h
+ /home/sebastian/Programacion/C++/ED_t3/Grafo.h \
+ /usr/include/c++/9/algorithm /usr/include/c++/9/utility \
+ /usr/include/c++/9/bits/stl_relops.h /usr/include/c++/9/bits/stl_algo.h \
+ /usr/include/c++/9/bits/algorithmfwd.h \
+ /usr/include/c++/9/bits/stl_heap.h /usr/include/c++/9/bits/stl_tempbuf.h \
+ /usr/include/c++/9/bits/uniform_int_dist.h

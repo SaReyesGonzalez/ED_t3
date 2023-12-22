@@ -17,14 +17,16 @@ void Grafo::calcularTiempoDemoraADestino(int idOrigen, int idDestino) {
 
     NodoServidores* nodoOrigen = encontrarNodoPorId(idOrigen);
     NodoServidores* nodoDestino = encontrarNodoPorId(idDestino);
-    NodoServidores* nodoAux = nullptr;
+    NodoServidores* nodoAux;
 
     int peso;
     int partes;
     int tiempoTotal = 0;
     vector<NodoServidores*> ruta;
+    vector<int> tiempos;
 
     ruta.push_back(nodoDestino);
+    tiempos.push_back(tiempoTotal);
 
     cout << "Ingrese el peso del archivo que desea enviar: ";
     cin >> peso;
@@ -40,15 +42,21 @@ void Grafo::calcularTiempoDemoraADestino(int idOrigen, int idDestino) {
 
         tiempoTotal = tiempoTotal + (partes * distancia);
 
-        ruta.push_back(nodoAux);
-
         nodoDestino = nodoAux;
-        nodoAux = nodoAux->getNodoCaminoMasCorto();
+        ruta.push_back(nodoAux);
+        tiempos.push_back(tiempoTotal);
 
     } while (nodoDestino != nodoOrigen);
 
-    cout << "El tiempo de entrega entre el nodo " << idOrigen <<
-    " y el nodo " << idDestino << " es de " << tiempoTotal << " segundos." << endl;
+    reverse(ruta.begin(),ruta.end());
+
+    cout << "\nLa ruta seguida fue: " << endl;
+    for (int i = 0 ; i < ruta.size() ; i++) {
+        cout << (i + 1) << ". Nodo: " << ruta.at(i)->getId() << " / Tiempo: " << tiempos.at(i) << endl;
+    }
+
+    cout << "\nEl tiempo de entrega entre el nodo " << idOrigen <<
+         " y el nodo " << idDestino << " es de " << tiempoTotal << " segundos." << endl;
 
 }
 
