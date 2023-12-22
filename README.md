@@ -1,4 +1,4 @@
-# Documentación del Proyecto de Simulador de Aplicación de Mensajería
+# Documentación de Proyecto 
 
 ## Descripción General
 Este proyecto implementa un simulador de aplicación de mensajería utilizando un algoritmo de Bellman-Ford para calcular la ruta más corta en una red de nodos que representan servidores y clientes. El objetivo es determinar el tiempo de demora para la entrega de mensajes entre diferentes dispositivos en la red.
@@ -48,10 +48,4 @@ El algoritmo de Bellman-Ford se utiliza para calcular la ruta más corta en la r
 - `registro`: Registra o verifica la existencia de un ID de usuario en la red.
 - `encontrarNodoPorId`: Encuentra un nodo en la red por su ID.
 - `encontrarAristaPorIds`: Encuentra una arista en la red dados los IDs de dos nodos.
-
-## Uso del Programa
-El programa comienza solicitando al usuario que se registre con un ID de dispositivo. Luego, presenta un menú de opciones donde el usuario puede elegir calcular el tiempo de demora para enviar un mensaje a otro dispositivo, ya sea especificando ambos dispositivos o utilizando el dispositivo registrado del usuario como punto de origen.
-
----
-
-Esta documentación proporciona una visión general de tu proyecto y de cómo están estructuradas e interconectadas las diferentes clases y métodos. Puedes expandir o modificar esta documentación según sea necesario para cubrir más detalles o para agregar información específica relacionada con la configuración, compilación y ejecución del proyecto.
+- `listaNodosConectados`: Printea la lista de nodos intrelazados a un nodo de referencia.

@@ -15,6 +15,7 @@ bool existeUsuarioId(int user, vector<NodoServidores*> vServidores);
 int registro(const vector<NodoServidores*> &vServidores);
 void crearGrafo(vector<NodoServidores*>& nodos, vector<AristaConexiones*> aristas);
 NodoServidores* encontrarNodoPorId(vector<NodoServidores*> nodos, int idNodo);
+void listaNodosConectados(vector<NodoServidores*> nodos, int nodoReferencia);
 
 int main() {
 
@@ -41,7 +42,7 @@ int main() {
         cout << "A) Calcular tiempo de demora entre usted y un dispositivo destino." << endl; //Funcion basica
         cout << "B) Calcular tiempo de demora entre un dispositivo de origen y destino." << endl; //Funcion extra 1
         cout << "C) Agregar vector." << endl; //Funcion extra 2
-        cout << "D) Lista de Vectores y aristas." << endl; //Funcion extra 3
+        cout << "D) Lista de servidores asociado sobre un punto de referencia." << endl; //Funcion extra 3
         cout << "E) Salir" << endl;
 
         flag = true;
@@ -53,6 +54,7 @@ int main() {
 
             case 'a':
             case 'A':
+                //Esta solo para evitar errores de printeo en la consola
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 idDestino = registro(vServidores);
 
@@ -80,7 +82,10 @@ int main() {
 
             case 'd':
             case 'D':
-                cout << "FUNCION EXTRA 3" << endl;
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                idOrigen = registro(vServidores);
+                listaNodosConectados(vServidores,idOrigen);
+
                 break;
 
             case 'e':
@@ -226,4 +231,17 @@ NodoServidores* encontrarNodoPorId(vector<NodoServidores*> nodos, int idNodo) {
         }
     }
     return nullptr;
+}
+
+void listaNodosConectados(vector<NodoServidores*> nodos, int idReferencia) {
+    NodoServidores* nodo = encontrarNodoPorId(nodos, idReferencia);
+
+    vector<NodoServidores*> nodosConectados = nodo->getVNodosEnviados();
+
+    cout << "Los servidores conectado a este son: ";
+    for (int i = 0; i < nodosConectados.size() ; i++) {
+        cout << nodosConectados.at(i)->getId() << " / ";
+    }
+    cout << endl;
+
 }
