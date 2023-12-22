@@ -1,5 +1,8 @@
 # Documentación de Proyecto 
 
+## Dato importante: 
+En las funciones que leen los archivos .csv nunca pude hacerlos correr de otra forma que no fuera con la direccion de la carpeta en la cual se encontraban. Espero esto no le cause mayores inconvenientes ...
+
 ## Comando de compilacion
 - g++ -o main main.cpp NodoServidores.cpp AristaConexiones.cpp Grafo.cpp
 
