@@ -1,5 +1,8 @@
 # Documentación de Proyecto 
 
+## Comando de compilacion
+- g++ -o main main.cpp NodoServidores.cpp AristaConexiones.cpp Grafo.cpp
+
 ## Descripción General
 Este proyecto implementa un simulador de aplicación de mensajería utilizando un algoritmo de Bellman-Ford para calcular la ruta más corta en una red de nodos que representan servidores y clientes. El objetivo es determinar el tiempo de demora para la entrega de mensajes entre diferentes dispositivos en la red.
 
