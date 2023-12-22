@@ -12,7 +12,7 @@ using namespace std;
 vector<NodoServidores*> lecturaServidores();
 vector<AristaConexiones*> lecturaConexiones();
 bool existeUsuarioId(int user, vector<NodoServidores*> vServidores);
-int registro(bool flag, int userId, const vector<NodoServidores*> &vServidores);
+int registro(const vector<NodoServidores*> &vServidores);
 void crearGrafo(vector<NodoServidores*>& nodos, vector<AristaConexiones*> aristas);
 NodoServidores* encontrarNodoPorId(vector<NodoServidores*> nodos, int idNodo);
 
@@ -25,15 +25,15 @@ int main() {
     auto* grafo = new Grafo(vServidores, vConexiones);
 
     char funcion;
-    bool flag = true;
-    int userId = 0;
-    int idOrigen = 0;
-    int idDestino = 0;
+    bool flag;
+    int userId;
+    int idOrigen;
+    int idDestino;
 
     cout << "Bienvenido a: Simulador - aplicacion de mensajeria !" << endl;
 
     //Registro
-    userId = registro(flag,userId,vServidores);
+    userId = registro(vServidores);
 
     // opciones menu
     do {
@@ -53,17 +53,24 @@ int main() {
 
             case 'a':
             case 'A':
-                idDestino = registro(flag,idDestino,vServidores);
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                idDestino = registro(vServidores);
+
                 grafo->bellmanFord(encontrarNodoPorId(vServidores,userId));
                 grafo->calcularTiempoDemoraADestino(userId,idDestino);
                 break;
 
             case 'b':
             case 'B':
-                idOrigen = registro(flag,idOrigen,vServidores);
-                idDestino = registro(flag,idDestino,vServidores);
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                idOrigen = registro(vServidores);
+
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                idDestino = registro(vServidores);
+
                 grafo->bellmanFord(encontrarNodoPorId(vServidores,idOrigen));
                 grafo->calcularTiempoDemoraADestino(idOrigen,idDestino);
+
                 break;
 
             case 'c':
@@ -173,16 +180,22 @@ bool existeUsuarioId(int userId, vector<NodoServidores*> vServidores) {
     return false;
 }
 
-int registro(bool flag, int userId, const vector<NodoServidores*>& vServidores) {
+int registro(const vector<NodoServidores*>& vServidores) {
+    int userId;
+    string input;
+    bool flag;
+
     do {
         cout << "Ingrese id dispositivo: ";
-        cin >> userId;
+        getline(cin, input);
+        stringstream ss(input);
 
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        flag = existeUsuarioId(userId,vServidores);
-
-        if (!flag) {
-            cout << "Id dispositivo no existe, ingrese un id nuevamente." << endl;
+        // Verifica si la entrada es un entero y si existe como ID de usuario
+        if (ss >> userId && !(ss >> input) && existeUsuarioId(userId, vServidores)) {
+            flag = true;
+        } else {
+            cout << "Id inválido o dispositivo no existe, intente nuevamente." << endl;
+            flag = false;
         }
 
     } while (!flag);
